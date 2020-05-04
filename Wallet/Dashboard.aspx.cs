@@ -11,30 +11,32 @@ namespace Wallet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["username"] == null)
+                Response.Redirect("login.aspx");
+            lblUserDetails.Text = "Username : " + Session["username"];
         }
 
         protected void btnLogout_Click(object sender, EventArgs e)
         {
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
         }
 
-        protected void Button3_Click(object sender, EventArgs e)
+        protected void onAccontClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Account.aspx");
+        }
+
+        protected void onSendClick(object sender, EventArgs e)
+        {
+            Response.Redirect("SendMoney.aspx");
+        }
+
+        protected void onRequestClick(object sender, EventArgs e)
         {
         }
 
-        protected void Button4_Click(object sender, EventArgs e)
-        {
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-        }
-
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-        }
-
-        protected void btmLogout_Click(object sender, EventArgs e)
+        protected void onStatementClick(object sender, EventArgs e)
         {
         }
     }
