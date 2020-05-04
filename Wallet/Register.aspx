@@ -12,11 +12,11 @@
         <div>
             <table style="border:5px solid white">
                 <tr>
-                    <td><asp:Label ID="fNameLabel" runat="server" Text="FirstName"></asp:Label></td>
+                    <td><asp:Label ID="fNameLabel" runat="server" Text="First Name"></asp:Label></td>
                     <td><asp:TextBox ID="fNameText" runat="server"></asp:TextBox></td>
                 </tr>
                 <tr>
-                    <td><asp:Label ID="lNameLabel" runat="server" Text="LastName"></asp:Label></td>
+                    <td><asp:Label ID="lNameLabel" runat="server" Text="Last Name"></asp:Label></td>
                     <td><asp:TextBox ID="lNameText" runat="server"></asp:TextBox></td>
                 </tr>
                 <tr>
@@ -28,20 +28,8 @@
                     <td><asp:TextBox ID="phoneText" runat="server"></asp:TextBox></td>
                 </tr>
                 <tr>
-                    <td><asp:Label ID="bankIDLabel" runat="server" Text="BankID"></asp:Label></td>
-                    <td><asp:TextBox ID="bankIDText" runat="server" TextMode="Number"></asp:TextBox></td>
-                </tr>
-                <tr>
-                    <td><asp:Label ID="accountNumLabel" runat="server" Text="Account Number"></asp:Label></td>
-                    <td><asp:TextBox ID="acountNumText" runat="server" TextMode="Number"></asp:TextBox></td>
-                </tr
-                <tr>
                     <td><asp:Label ID="SSNLabel" runat="server" Text="SSN"></asp:Label></td>
                     <td><asp:TextBox ID="SSNText" runat="server"  ></asp:TextBox></td>
-                </tr>
-                <tr>
-                    <td><asp:Label ID="balanceLabel" runat="server" Text="Balance"></asp:Label></td>
-                    <td><asp:TextBox ID="balanceText" runat="server" TextMode="Number" ></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td><asp:Label ID="usernameLabel" runat="server" Text="Usermame"></asp:Label></td>

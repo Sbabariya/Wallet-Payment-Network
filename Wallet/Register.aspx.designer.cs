@@ -96,42 +96,6 @@ namespace Wallet
         protected global::System.Web.UI.WebControls.TextBox phoneText;
 
         /// <summary>
-        /// bankIDLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label bankIDLabel;
-
-        /// <summary>
-        /// bankIDText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox bankIDText;
-
-        /// <summary>
-        /// accountNumLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label accountNumLabel;
-
-        /// <summary>
-        /// acountNumText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox acountNumText;
-
-        /// <summary>
         /// SSNLabel control.
         /// </summary>
         /// <remarks>
@@ -148,24 +112,6 @@ namespace Wallet
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox SSNText;
-
-        /// <summary>
-        /// balanceLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label balanceLabel;
-
-        /// <summary>
-        /// balanceText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox balanceText;
 
         /// <summary>
         /// usernameLabel control.
