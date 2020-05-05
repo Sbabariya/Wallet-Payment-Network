@@ -72,6 +72,7 @@
     <Content Include="Dashboard.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
+    <Content Include="RequestMoney.aspx" />
     <Content Include="SendMoney.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -104,6 +105,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RequestMoney.aspx.cs">
+      <DependentUpon>RequestMoney.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestMoney.aspx.designer.cs">
+      <DependentUpon>RequestMoney.aspx</DependentUpon>
     </Compile>
     <Compile Include="SendMoney.aspx.cs">
       <DependentUpon>SendMoney.aspx</DependentUpon>

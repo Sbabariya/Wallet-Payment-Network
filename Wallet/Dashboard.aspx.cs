@@ -34,6 +34,7 @@ namespace Wallet
 
         protected void onRequestClick(object sender, EventArgs e)
         {
+            Response.Redirect("RequestMoney.aspx");
         }
 
         protected void onStatementClick(object sender, EventArgs e)

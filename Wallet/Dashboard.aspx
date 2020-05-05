@@ -19,7 +19,7 @@
         <br /><br />
         <asp:Button ID="sendButton" runat="server" OnClick="onSendClick" Text="Send Money" style="height: 26px" />
         <br /><br />
-        <asp:Button ID="requestButton" runat="server" OnClick="onRequestClick" Text="Request And Split" />
+        <asp:Button ID="requestButton" runat="server" OnClick="onRequestClick" Text="Request Money" />
         <br /><br />
         <asp:Button ID="statementButton" runat="server" OnClick="onStatementClick" Text="Statements and Search Transactions" />
         <br /><br />
