@@ -51,7 +51,7 @@ namespace Wallet
             String fromSSN = gvRow.Cells[6].Text;
 
             
-            SqlConnection con = new SqlConnection(@"Data Source=localhost;initial Catalog=Payment;Integrated Security=True;");
+            SqlConnection con = new SqlConnection(@"Data Source=HOME\SQLEXPRESS;initial Catalog=Payment;Integrated Security=True;");
             SqlCommand com = new SqlCommand("Update RequestTransaction Set [Status] = 'C' where ReqID = @reqID", con);
             com.Parameters.AddWithValue("reqID", reqID);
             con.Open();

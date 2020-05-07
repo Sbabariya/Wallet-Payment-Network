@@ -57,7 +57,7 @@ namespace Wallet
 
                     if(!String.IsNullOrWhiteSpace(amount)  && !String.IsNullOrWhiteSpace(memo) && (!String.IsNullOrWhiteSpace(phone) || !String.IsNullOrWhiteSpace(email)))
                     {
-                        SqlConnection con = new SqlConnection(@"Data Source=localhost;initial Catalog=Payment;Integrated Security=True;");
+                        SqlConnection con = new SqlConnection(@"Data Source=HOME\SQLEXPRESS;initial Catalog=Payment;Integrated Security=True;");
                         SqlCommand command = new SqlCommand("INSERT INTO RequestTransaction (Amount, Memo, RequestDate, FromSSN, ToPhoneNumber, ToEmail) values(@amount, @memo, @date, @ssn, @phone, @email)", con);
                         command.Parameters.Add("@amount", SqlDbType.Real);
                         command.Parameters["@amount"].Value = amount;

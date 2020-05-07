@@ -17,7 +17,7 @@ namespace Wallet
 
         protected void onBtnLoginClick(object sender, EventArgs e)
         {
-            using(SqlConnection sqlCon = new SqlConnection(@"Data Source=localhost;initial Catalog=Payment;Integrated Security=True;"))
+            using(SqlConnection sqlCon = new SqlConnection(@"Data Source=HOME\SQLEXPRESS;initial Catalog=Payment;Integrated Security=True;"))
             {
                 sqlCon.Open();
                 string query = "SELECT COUNT(1) FROM Login WHERE UserName=@username AND Password=@password";

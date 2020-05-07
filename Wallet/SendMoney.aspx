@@ -14,7 +14,7 @@
                         <asp:Label ID="Label1" runat="server" Text="Enter Recipient"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="Recipient" runat="server" placeholder="UserID or MobileNumber or Email"></asp:TextBox>
+                        <asp:TextBox ID="Recipient" runat="server" placeholder="SSN"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -33,14 +33,24 @@
                         <asp:TextBox ID="Memo" runat="server"></asp:TextBox>
                     </td>
                 </tr>
-                
-                <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+                <tr>
+                    <td>
+                        <asp:Label ID="Label4" runat="server" Text="CancellationReason"></asp:Label>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="CancellationReason" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                     </td>
                     <td>
                         <asp:Button ID="Button1" runat="server" Text="Confirm Payment" OnClick="Button1_Click" />
                     </td>
+                       <td>
+                        <asp:Button ID="Button3" runat="server" Text="Cancel Payment" OnClick="Button3_Click" />
+                    </td>
+
                 </tr>
                 <tr>
             <td></td>
@@ -54,7 +64,11 @@
             <td>
                 <asp:Label ID="lblMsg" runat="server" Text="Email Sent" ForeColor="Blue"></asp:Label></td>
             
-
+            <td>
+                <asp:Label ID="lblErrorMessage1" runat="server" Text="Cancellation Time exceeded" ForeColor="red"></asp:Label></td>
+            <td>
+                <asp:Label ID="lblSuccessMessage1" runat="server" Text="Cancellation Successful" ForeColor="Blue"></asp:Label></td>
+            <td>
         </tr>
             </table>
         <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Go to Main Menu" />

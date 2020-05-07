@@ -24,7 +24,7 @@ namespace Wallet
 
         protected void onClickAddAccount(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=localhost;initial Catalog=Payment;Integrated Security=True;");
+            SqlConnection con = new SqlConnection(@"Data Source=HOME\SQLEXPRESS;initial Catalog=Payment;Integrated Security=True;");
             if(isPrimary.Text.Equals("1"))
             {
                 SqlCommand cmd4 = new SqlCommand("Update BankAccount set isPrimary = 0 where SSN = @ssn", con);
@@ -69,7 +69,7 @@ namespace Wallet
 
         protected void onClickAddEmail(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=localhost;initial Catalog=Payment;Integrated Security=True;");
+            SqlConnection con = new SqlConnection(@"Data Source=HOME\SQLEXPRESS;initial Catalog=Payment;Integrated Security=True;");
             SqlCommand command = new SqlCommand("INSERT INTO Email values(@ssn, @email)", con);
             command.Parameters.AddWithValue("ssn", Session["ssn"]);
             command.Parameters.AddWithValue("email", email.Text);

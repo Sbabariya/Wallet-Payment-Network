@@ -18,7 +18,7 @@ namespace Wallet
 
         protected void onBtnRegisterClick(object sender, EventArgs e)
         {
-            SqlConnection sqlCon = new SqlConnection(@"Data Source=localhost;initial Catalog=Payment;Integrated Security=True;");
+            SqlConnection sqlCon = new SqlConnection(@"Data Source=HOME\SQLEXPRESS;initial Catalog=Payment;Integrated Security=True;");
             
             SqlCommand cmd = new SqlCommand("insert into UserAccount (SSN, FirstName, LastName, PhoneNumber) values (@SSN, @FirstName, @LastName, @PhoneNumber)", sqlCon);
             cmd.Parameters.AddWithValue("SSN", SSNText.Text);
