@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SendMoney.aspx.cs" Inherits="asp.netloginpage.SendMoney" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SendMoney.aspx.cs" Inherits="Wallet.SendMoney" %>
 
 <!DOCTYPE html>
 
@@ -14,7 +14,7 @@
                         <asp:Label ID="Label1" runat="server" Text="Enter Recipient"></asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="Recipient" runat="server" placeholder="SSN"></asp:TextBox>
+                        <asp:TextBox ID="Recipient" runat="server" placeholder="Phone Number"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -59,10 +59,10 @@
             <td>
                 <asp:Label ID="lblSuccessMessage" runat="server" Text="Payment Successful" ForeColor="Blue"></asp:Label></td>
             <td>
-                <asp:Button ID="send_email" runat="server" Text="Email to register" OnClick="send_email_click" />
+                <asp:Button ID="send_email" runat="server" Text="Message to register" OnClick="send_email_click" />
             </td>
             <td>
-                <asp:Label ID="lblMsg" runat="server" Text="Email Sent" ForeColor="Blue"></asp:Label></td>
+                <asp:Label ID="lblMsg" runat="server" Text="Message Sent" ForeColor="Blue"></asp:Label></td>
             
             <td>
                 <asp:Label ID="lblErrorMessage1" runat="server" Text="Cancellation Time exceeded" ForeColor="red"></asp:Label></td>

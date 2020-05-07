@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
 
-namespace asp.netloginpage
+namespace Wallet
 {
     public partial class SendMoney : System.Web.UI.Page
     {

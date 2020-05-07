@@ -20,6 +20,7 @@
         </table>
         <div>
         </div>
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Go to Main Menu" />
     </form>
 </body>
 </html>

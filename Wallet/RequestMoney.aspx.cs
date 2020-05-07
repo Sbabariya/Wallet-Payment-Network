@@ -29,6 +29,10 @@ namespace Wallet
             Session.Abandon();
             Response.Redirect("Login.aspx");
         }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Dashboard.aspx");
+        }
 
         protected void onRequestClick(object sender, EventArgs e)
         {

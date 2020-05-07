@@ -79,5 +79,9 @@ namespace Wallet
 
             Response.Redirect("Account.aspx");
         }
+        protected void Buttonexit_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Dashboard.aspx");
+        }
     }
 }

@@ -83,6 +83,7 @@
                 </Columns>
             </asp:GridView>
         </div>
+        <asp:Button ID="Button2" runat="server" OnClick="Buttonexit_Click" Text="Go to Main Menu" />
     </form>
 </body>
 </html>
