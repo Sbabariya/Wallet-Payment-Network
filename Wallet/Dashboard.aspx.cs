@@ -40,6 +40,7 @@ namespace Wallet
 
         protected void onStatementClick(object sender, EventArgs e)
         {
+            Response.Redirect("Statements.aspx");
         }
 
         protected void onAcceptClick(object sender, EventArgs e)
