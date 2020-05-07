@@ -26,34 +26,36 @@ namespace asp.netloginpage
         {
             SqlConnection con = new SqlConnection(@"Data Source=HOME\SQLEXPRESS;initial Catalog=Payment;Integrated Security=True;");
             con.Open();
-            string query = "SELECT COUNT(1) FROM UserAccount WHERE SSN=@SSN";
+            string query = "SELECT COUNT(1) FROM UserAccount WHERE PhoneNumber=@phone";
             SqlCommand sqlCmd = new SqlCommand(query, con);
-            sqlCmd.Parameters.AddWithValue("@SSN", Recipient.Text.Trim());
+            sqlCmd.Parameters.AddWithValue("@phone", Recipient.Text.Trim());
             int count = Convert.ToInt32(sqlCmd.ExecuteScalar());
             if (count == 1)
             {
-                SqlCommand cmd = new SqlCommand("Update UserAccount set Balance=Balance-@amount where SSN=@SSN ", con);
+                SqlCommand cmd = new SqlCommand("Update UserAccount set Balance=Balance-@amount where SSN=@ssn ", con);
                 cmd.Parameters.Add("@amount", SqlDbType.Real);
                 cmd.Parameters["@amount"].Value = Amount.Text;
-                cmd.Parameters.AddWithValue("SSN", Session["ssn"]);
+                cmd.Parameters.AddWithValue( "@ssn", Session["ssn"]);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                SqlCommand cmd1 = new SqlCommand("Update UserAccount set Balance=Balance+@amount where SSN=@SSN ", con);
+                SqlCommand cmd1 = new SqlCommand("Update UserAccount set Balance=Balance+@amount where PhoneNumber=@phone ", con);
                 cmd1.Parameters.Add("@amount", SqlDbType.Real);
                 cmd1.Parameters["@amount"].Value = Amount.Text;
-                cmd1.Parameters.AddWithValue("SSN", Recipient.Text);
+                cmd1.Parameters.AddWithValue("@phone", Recipient.Text.Trim());
                 con.Open();
                 cmd1.ExecuteNonQuery();
-                con.Close();
                 SqlCommand cmd2 = new SqlCommand("insert into Send_Payments(payorSSN, payeeSSN,paymentDateTime, amount, CancellationReason,Memo) values (@payorSSN, @payeeSSN,@paymentDateTime, @amount, @CancellationReason ,@Memo) ", con);
-                cmd2.Parameters.AddWithValue("payorSSN", Session["ssn"]);
-                cmd2.Parameters.AddWithValue("payeeSSN", Recipient.Text);
+                string query2 = "SELECT SSN FROM UserAccount WHERE PhoneNumber=@phone";
+                SqlCommand sqlCmd2 = new SqlCommand(query2, con);
+                sqlCmd2.Parameters.AddWithValue("@phone", Recipient.Text.Trim());
+                String count2 = Convert.ToString(sqlCmd2.ExecuteScalar());
+                cmd2.Parameters.AddWithValue("payorSSN", count2);
+                cmd2.Parameters.AddWithValue("payeeSSN", Session["ssn"]);
                 cmd2.Parameters.AddWithValue("paymentDateTime", DateTime.Now);
                 cmd2.Parameters.AddWithValue("CancellationReason", CancellationReason.Text);
                 cmd2.Parameters.AddWithValue("Memo", Memo.Text);
                 cmd2.Parameters.Add("@amount", SqlDbType.Real);
-                cmd2.Parameters["@amount"].Value = Amount.Text; 
-                con.Open();
+                cmd2.Parameters["@amount"].Value = Amount.Text;
                 cmd2.ExecuteNonQuery();
                 con.Close();
                 lblSuccessMessage.Visible = true;
@@ -81,9 +83,13 @@ namespace asp.netloginpage
         {
             SqlConnection con = new SqlConnection(@"Data Source=HOME\SQLEXPRESS;initial Catalog=Payment;Integrated Security=True;");
             con.Open();
-            string query1 = "select DATEDIFF(minute,(SELECT TOP 1 paymentDateTime FROM Send_Payments WHERE payeeSSN=@SSN order by paymentDateTime ),CURRENT_TIMESTAMP)";
+            string query2 = "SELECT SSN FROM UserAccount WHERE PhoneNumber=@phone";
+            SqlCommand sqlCmd4 = new SqlCommand(query2, con);
+            sqlCmd4.Parameters.AddWithValue("@phone", Recipient.Text.Trim());
+            String count2 = Convert.ToString(sqlCmd4.ExecuteScalar());
+            string query1 = "select DATEDIFF(minute,(SELECT TOP 1 paymentDateTime FROM Send_Payments WHERE payorSSN=@ssn order by paymentDateTime desc ),CURRENT_TIMESTAMP)";
             SqlCommand sqlCmd1 = new SqlCommand(query1, con);
-            sqlCmd1.Parameters.AddWithValue("@SSN", Recipient.Text.Trim());
+            sqlCmd1.Parameters.AddWithValue("ssn",count2);
             Int64 time = Convert.ToInt64(sqlCmd1.ExecuteScalar());
             if (time < 10 )
             {
@@ -93,15 +99,21 @@ namespace asp.netloginpage
                 cmd.Parameters.AddWithValue("SSN", Session["ssn"]);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                SqlCommand cmd1 = new SqlCommand("Update UserAccount set Balance=Balance-@amount where SSN=@SSN ", con);
+                SqlCommand cmd1 = new SqlCommand("Update UserAccount set Balance=Balance-@amount where PhoneNumber=@Phone ", con);
                 cmd1.Parameters.Add("@amount", SqlDbType.Real);
                 cmd1.Parameters["@amount"].Value = Amount.Text;
-                cmd1.Parameters.AddWithValue("SSN", Recipient.Text);
+                cmd1.Parameters.AddWithValue("Phone", Recipient.Text);
                 con.Open();
                 cmd1.ExecuteNonQuery();
                 con.Close();
-                SqlCommand cmd2 = new SqlCommand("UPDATE Send_Payments SET CancellationReason='cancelled'  where payeeSSN=@payeeSSN ", con);
-                cmd2.Parameters.AddWithValue("payeeSSN", Recipient.Text);
+                string query3 = "SELECT SSN FROM UserAccount WHERE PhoneNumber=@phone";
+                SqlCommand sqlCmd3 = new SqlCommand(query3, con);
+                sqlCmd3.Parameters.AddWithValue("@phone", Recipient.Text.Trim());
+                con.Open();
+                String count3 = Convert.ToString(sqlCmd3.ExecuteScalar());
+                con.Close();
+                SqlCommand cmd2 = new SqlCommand("UPDATE Send_Payments SET CancellationReason='cancelled'  where payorSSN=@payorSSN ", con);
+                cmd2.Parameters.AddWithValue("payorSSN", count3);
                 con.Open();
                 cmd2.ExecuteNonQuery();
                 con.Close();
