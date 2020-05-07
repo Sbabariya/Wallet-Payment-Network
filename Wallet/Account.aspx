@@ -11,20 +11,20 @@
         <div>
             <asp:Button ID="btmLogout" runat="server" Text="Logout" OnClick="btnLogout_Click" style="width: 57px" />
             <br /><br />
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LoginDBConnectionString %>" SelectCommand="SELECT FirstName, LastName, PhoneNumber, Username FROM [UserAccount] A, [Login] L Where L.Username = @UserName" UpdateCommand="">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:LoginDBConnectionString %>" SelectCommand="SELECT FirstName, LastName, PhoneNumber, SSN FROM [UserAccount] Where SSN = @ssn" UpdateCommand="Update UserAccount set [FirstName]=@FirstName,[LastName]=@LastName, [PhoneNumber]=@PhoneNumber where ([SSN] = @ssn)">
                 <SelectParameters>
-                    <asp:SessionParameter Name="UserName" SessionField="UserName" Type="String" />
+                    <asp:SessionParameter Name="ssn" SessionField="ssn" Type="String" />
                 </SelectParameters>
             </asp:SqlDataSource>
         </div>
         <div>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="UserName" DataSourceID="SqlDataSource1">
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="SSN" DataSourceID="SqlDataSource1">
                 <Columns>
                     <asp:CommandField ShowEditButton="True" />
-                    <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
-                    <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
-                    <asp:BoundField DataField="PhoneNumber" HeaderText="MobileNumber" SortExpression="MobileNumber" />
-                    <asp:BoundField DataField="UserName" HeaderText="UserName" ReadOnly="True" SortExpression="UserName" />
+                    <asp:BoundField DataField="FirstName" HeaderText="First Name" SortExpression="FirstName" />
+                    <asp:BoundField DataField="LastName" HeaderText="Last Name" SortExpression="LastName" />
+                    <asp:BoundField DataField="PhoneNumber" HeaderText="Phone Number" SortExpression="MobileNumber" />
+                    <asp:BoundField DataField="SSN" HeaderText="SSN" ReadOnly="True" SortExpression="SSN" />
                 </Columns>
             </asp:GridView>
         </div>
@@ -35,11 +35,14 @@
                 <td><asp:TextBox ID="BankID" runat="server"></asp:TextBox></td>
                 <td><asp:Label ID="accountNumLabel" runat="server" Text="AccountNumber"></asp:Label></td>
                 <td><asp:TextBox ID="accountNumber" runat="server"></asp:TextBox></td>
+                <td><asp:Label ID="balanceLabel" runat="server" Text="Balance"></asp:Label></td>
+                <td><asp:TextBox ID="balance" runat="server"></asp:TextBox></td>
                 <td><asp:Label ID="isPrimaryLabel" runat="server" Text="isPrimary"></asp:Label></td>
                 <td><asp:TextBox ID="isPrimary" runat="server"></asp:TextBox></td>
                 <td><asp:Button ID="addAccountButton" runat="server" Text="AddBankAccount" OnClick="onClickAddAccount" /></td>
             </tr>
         </table>
+        <br />
         <div>
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" DeleteCommand="DELETE FROM BankAccount WHERE [BankID]=@bankID and [AccountNumber]=@accountNumber and [SSN]=@ssn" ConnectionString="<%$ ConnectionStrings:LoginDBConnectionString %>" SelectCommand="SELECT [SSN], [BankID], [AccountNumber], [isPrimary] FROM [BankAccount] WHERE ([SSN] = @ssn)" UpdateCommand="Update BankAccount set [BankID]=@bankID, [AccountNumber]=@accountNumber, [isPrimary]=@IsPrimary where ([SSN] = @ssn)">
                 <SelectParameters>
@@ -56,7 +59,30 @@
                     <asp:BoundField DataField="IsPrimary" HeaderText="IsPrimary" SortExpression="IsPrimary" />
                 </Columns>
             </asp:GridView>
-       </div>
+        </div>
+        <br /><br /><br /><br />
+        <table style="border:5px solid white">
+            <tr>
+                <td><asp:Label ID="emailLabel" runat="server" Text="Email"></asp:Label></td>
+                <td><asp:TextBox ID="email" runat="server"></asp:TextBox></td>
+                <td><asp:Button ID="addEmailButton" runat="server" Text="AddEmail" OnClick="onClickAddEmail" /></td>
+            </tr>
+        </table>
+        <div>
+			<asp:SqlDataSource ID="SqlDataSource3" runat="server" DeleteCommand="DELETE FROM Email WHERE [SSN]=@ssn and Email = @email" ConnectionString="<%$ ConnectionStrings:LoginDBConnectionString %>" SelectCommand="SELECT SSN, Email from Email Where SSN = @ssn">
+                <SelectParameters>
+                    <asp:SessionParameter Name="ssn" SessionField="ssn" Type="String" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+        </div>
+        <div>
+            <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" DataKeyNames="SSN,email" DataSourceID="SqlDataSource3" AutoGenerateDeleteButton="True">
+                <Columns>
+                    <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="FirstName" />
+                    <asp:BoundField DataField="SSN" HeaderText="SSN" ReadOnly="True" SortExpression="SSN" />
+                </Columns>
+            </asp:GridView>
+        </div>
     </form>
 </body>
 </html>
